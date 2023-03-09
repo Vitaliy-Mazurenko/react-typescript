@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-            <code>src/App.tsx</code> TypeScript.
+            <code>src/App.tsx</code> React+ TypeScript.
         </p>
         <a
           className="App-link"
