@@ -5,6 +5,7 @@
     },
     "extends": [
         "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:react-hooks/recommended",
         "plugin:react/recommended",
         "plugin:import/errors",
@@ -15,11 +16,12 @@
     "overrides": [
     ],
     "parserOptions": {
-        "project": "./tsconfig.json",
+        "project": true,
         "tsconfigRootDir": "__dirname",
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "root": true,
     "plugins": [
         "react",
         "@typescript-eslint"
