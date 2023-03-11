@@ -12,10 +12,10 @@
         "plugin:import/typescript",
         "standard-with-typescript"
     ],
-    "parser": "@typescript-eslint/parser",
     "overrides": [
     ],
     "parserOptions": {
+        "project": "./tsconfig.json",
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
