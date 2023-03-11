@@ -26,6 +26,8 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "semi": "off",
+        "@typescript-eslint/semi": "warn",
         "no-shadow": "off",
         "react/jsx-filename-extension": [2, { "extensions": [ ".tsx" ] }],
         "import/prefer-default-export": "off",
