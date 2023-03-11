@@ -16,8 +16,7 @@
     "overrides": [
     ],
     "parserOptions": {
-        "project": true,
-        "tsconfigRootDir": "__dirname",
+        "project": "./tsconfig.json",
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
