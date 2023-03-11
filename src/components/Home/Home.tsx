@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
 import './home.css';
-import initData  from '../../types/initData';
+import type initData from '../../types/initData';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const ref = useRef<HTMLFormElement>(null);
   const [init, setInit] = useState<initData>({
-		columns: 5,
-		rows: 5,
-		near: 5,
-	});
+    columns: 5,
+    rows: 5,
+    near: 5
+  });
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = () => {
    if (ref.current){
