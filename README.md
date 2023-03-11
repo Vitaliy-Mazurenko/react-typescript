@@ -44,3 +44,6 @@ npm i eslint-plugin-prettier --save-dev
 npm i eslint-config-prettier --save-dev
 npm i react-router-dom --save
 npm i -D eslint-config-prettier
+npm uninstall eslint-config-prettier
+npm uninstall eslint-plugin-prettier
+npm uninstall prettier
