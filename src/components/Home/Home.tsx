@@ -12,13 +12,13 @@ const Home: React.FC = () => {
   });
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = () => {
-   if (ref.current){
-		setInit({
-			columns: ref.current.columns.value,
-			rows: ref.current.rows.value,
-			near: ref.current.near.value,
-		});
-   }
+    if (ref.current) {
+    setInit({
+      columns: ref.current.columns.value,
+      rows: ref.current.rows.value,
+      near: ref.current.near.value,
+    });
+    }
 	};
 
   const [valueError, setError] = React.useState<string>('');
