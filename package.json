@@ -1,21 +1,28 @@
 {
-  "name": "demo-routing-in-typescript-react-app",
+  "name": "react-typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Vitaliy-Mazurenko.github.io/react-typescript/",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.14",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6.4.3",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint --ext .ts,.tsx src --fix",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "gh-pages:404": "cp build/index.html build/404.html"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -29,21 +36,24 @@
       "last 1 safari version"
     ]
   },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
   "devDependencies": {
-    "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.4.0",
-    "@testing-library/user-event": "13.5.0",
-    "@types/jest": "27.5.2",
-    "@types/node": "16.18.3",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "@typescript-eslint/eslint-plugin": "5.43.0",
-    "@typescript-eslint/parser": "5.43.0",
-    "eslint": "8.28.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-import-resolver-typescript": "3.5.2",
-    "eslint-plugin-react": "7.31.11",
-    "react-scripts": "5.0.1",
-    "typescript": "4.9.3"
-  }
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "eslint": "^8.36.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Vitaliy-Mazurenko.github.io/react-typescript/"
+  },
+  "author": "",
+  "license": "ISC"
 }

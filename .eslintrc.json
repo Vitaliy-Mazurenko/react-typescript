@@ -1,50 +1,32 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "react"
-    ],
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:import/typescript",
-        "airbnb",
-        "airbnb/hooks",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "settings": {
-        "import/extensions": [ ".ts", ".tsx" ],
-        "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx"]
-        },
-        "import/resolver": {
-            "typescript": {
-                "project": "./tsconfig.json"
-            }
-        }
-    },
     "env": {
         "browser": true,
-        "node": true,
-        "jest": true
+        "es2021": true
     },
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "standard-with-typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
     "rules": {
-        "no-shadow": "off",
-        "react/jsx-filename-extension": [2, { "extensions": [ ".tsx" ] }],
-        "import/prefer-default-export": "off",
-        "import/extensions": [ "error", "ignorePackages", {
-            "js": "never",
-            "jsx": "never",
-            "ts": "never",
-            "tsx": "never"
-        }],
-        "import/no-extraneous-dependencies": [ "error", {
-            "devDependencies": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "src/setupTests.ts"]
-        }]
+        "require-jsdoc": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-types": "off"
     }
 }

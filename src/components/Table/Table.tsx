@@ -14,7 +14,7 @@ const Table: React.FC = () => {
         <table className="Mtable" aria-label="simple table">
           <tbody>
               <tr>
-              <td>Cell</td>
+               <td>Cell</td>
              </tr>
           </tbody>
             <tfoot>
