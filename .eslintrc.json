@@ -1,43 +1,39 @@
 {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:import/typescript",
+        "airbnb",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "settings": {
+        "import/extensions": [ ".ts", ".tsx" ],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {
+                "project": "./tsconfig.json"
+            }
+        }
+    },
     "env": {
         "browser": true,
-        "es2021": true
+        "node": true,
+        "jest": true
     },
-    "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:react-hooks/recommended",
-        "plugin:react/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript",
-        "standard-with-typescript"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "project": "./tsconfig.json",
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "root": true,
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
     "rules": {
-        "semi": "off",
-        "@typescript-eslint/semi": "error",
-        "jsx-a11y/label-has-associated-control": [ "error", {
-            "required": {
-                "some": [ "nesting", "id"  ]
-            }
-            }],
-            "jsx-a11y/label-has-for": [ "error", {
-                "required": {
-                    "some": [ "nesting", "id"  ]
-                }
-                }],
         "no-shadow": "off",
         "react/jsx-filename-extension": [2, { "extensions": [ ".tsx" ] }],
         "import/prefer-default-export": "off",
@@ -51,12 +47,23 @@
             "devDependencies": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "src/setupTests.ts"]
         }],
 		"react/function-component-definition": [
-            "error",
-            {
+  "error",
+  {
     "namedComponents": ["function-declaration", "arrow-function"],
     "unnamedComponents": "arrow-function"
-        }
-    ]
-
+  }
+],
+"semi": "off",
+"@typescript-eslint/semi": "error",
+"jsx-a11y/label-has-associated-control": [ "error", {
+  "required": {
+    "some": [ "nesting", "id"  ]
+  }
+}],
+"jsx-a11y/label-has-for": [ "error", {
+  "required": {
+    "some": [ "nesting", "id"  ]
+  }
+}]
     }
 }
