@@ -1,6 +1,6 @@
 import React from 'react';
 import './table.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Table: React.FC = () => {
   const navigate = useNavigate();
@@ -8,21 +8,20 @@ const Table: React.FC = () => {
   return (
     <div className="table-wrap">
       <span id="goBack-btn">
-      <button onClick={() => navigate('/')}>Back</button>
+        <button type="button" onClick={() => navigate('/')}>Back</button>
       </span>
       <span>
         <table className="Mtable" aria-label="simple table">
           <tbody>
-              <tr>
-               <td>Cell</td>
-             </tr>
+            <tr>
+              <td>Cell</td>
+            </tr>
           </tbody>
-            <tfoot>
-            </tfoot>
+          <tfoot />
         </table>
       </span>
     </div>
   );
-}
+};
 
 export default Table;
