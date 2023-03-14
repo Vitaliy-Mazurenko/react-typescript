@@ -27,9 +27,20 @@
     ],
     "rules": {
         "semi": "off",
-        "@typescript-eslint/semi": "warn",
+        "@typescript-eslint/semi": "error",
+        "jsx-a11y/label-has-associated-control": [ "error", {
+            "required": {
+                "some": [ "nesting", "id"  ]
+            }
+            }],
+            "jsx-a11y/label-has-for": [ "error", {
+                "required": {
+                    "some": [ "nesting", "id"  ]
+                }
+                }],
         "no-shadow": "off",
         "react/jsx-filename-extension": [2, { "extensions": [ ".tsx" ] }],
+        "import/prefer-default-export": "off",
         "import/extensions": [ "error", "ignorePackages", {
             "js": "never",
             "jsx": "never",
@@ -38,6 +49,14 @@
         }],
         "import/no-extraneous-dependencies": [ "error", {
             "devDependencies": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "src/setupTests.ts"]
-        }]
+        }],
+		"react/function-component-definition": [
+            "error",
+            {
+    "namedComponents": ["function-declaration", "arrow-function"],
+    "unnamedComponents": "arrow-function"
+        }
+    ]
+
     }
 }
