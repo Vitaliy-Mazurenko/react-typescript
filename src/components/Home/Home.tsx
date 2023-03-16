@@ -1,40 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
-import type initData from '../../types/initData';
 
 const Home: React.FC = () => {
-  const ref = useRef<HTMLFormElement>(null);
-  const [init, setInit] = useState<initData>({
-    columns: 5,
-    rows: 5,
-    near: 5,
-  });
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = () => {
-    if (ref.current) {
-      setInit({
-        columns: ref.current.columns.value,
-        rows: ref.current.rows.value,
-        near: ref.current.near.value,
-      });
-    }
-  };
-
+  const [initColumns, setInitColumns] = useState<number | string>(5);
+  const [initRows, setInitRows] = useState<number | string>(5);
+  const [initNear, setinitNear] = useState<number | string>(5);
   const [valueError, setError] = React.useState<string>('');
   const navigate = useNavigate();
 
-  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    if ((init.columns > 0 && init.columns < 100) && init.rows > 0 && init.near > 0) {
+    if (initColumns < 100 && initRows < 100 && initNear < 100) {
       navigate('/table');
-      setInit(init);
-      console.log(init.columns);
+      setInitColumns(+initColumns);
+      setInitRows(initRows);
+      setinitNear(initNear);
       setError('');
     } else {
-      console.warn('value <= 0');
-      console.log(init);
-      setError('enter value > 0');
+      setError('enter: value > 0 < 100');
     }
   };
 
@@ -42,16 +26,15 @@ const Home: React.FC = () => {
     <div className="home">
       <div className="creat-wrap">
         <div className="input-wrap">
-          <form onSubmit={(e) => handleClick(e)} className="homeForm" ref={ref}>
+          <form className="homeForm">
             <label htmlFor="columns">columns</label>
             <input
-              // autoFocus
               id="columns"
               type="number"
               name="columns"
               minLength={1}
-              value={init.columns}
-              onChange={handleChange}
+              value={initColumns}
+              onChange={(e) => setInitColumns(e.target.value)}
               required
             />
             <label htmlFor="rows">rows</label>
@@ -60,8 +43,8 @@ const Home: React.FC = () => {
               type="number"
               name="rows"
               minLength={1}
-              value={init.rows}
-              onChange={handleChange}
+              value={initRows}
+              onChange={(e) => setInitRows(e.target.value)}
               required
             />
             <label htmlFor="near">near</label>
@@ -69,12 +52,12 @@ const Home: React.FC = () => {
               id="near"
               type="number"
               name="near"
-              value={init.near}
-              onChange={handleChange}
+              value={initNear}
+              onChange={(e) => setinitNear(e.target.value)}
               required
             />
-            <div>{valueError}</div>
-            <button type="button" className="buttonAdd">
+            <div className="Error">{valueError}</div>
+            <button type="button" className="buttonAdd" disabled={initColumns < 1 || initRows < 1 || initNear < 1} onClick={(e) => handleClick(e)}>
               Add New Table
             </button>
           </form>

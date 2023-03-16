@@ -44,3 +44,12 @@
 .buttonAdd:hover {
   background-color: #303f9f;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #3f61c6;
+}
+
+.Error{
+  color: red;
+}
