@@ -6,7 +6,7 @@ import { Context } from '../../context/context';
 const Table: React.FC = () => {
   const navigate = useNavigate();
   const {
-    rows, columns, near, setNear,
+    rows, columns, near,
   } = useContext(Context);
 
   return (
