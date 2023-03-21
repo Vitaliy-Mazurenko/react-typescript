@@ -5,7 +5,9 @@ import { Context } from '../../context/context';
 
 const Table: React.FC = () => {
   const navigate = useNavigate();
-  const {rows, columns, near, setNear} = useContext(Context);
+  const {
+    rows, columns, near, setNear,
+  } = useContext(Context);
 
   return (
     <div className="table-wrap">
