@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../../context/context';
 
 const Home: React.FC = () => {
-  const [initColumns, setInitColumns] = useState<number | string>(5);
-  const [initRows, setInitRows] = useState<number | string>(5);
-  const [initNear, setinitNear] = useState<number | string>(5);
-  const [valueError, setError] = React.useState<string>('');
+  const {
+    rows, columns, near, setRows, setColumns, setNear,
+  } = useContext(Context);
+  const [initColumns, setInitColumns] = useState<number>(columns);
+  const [initRows, setInitRows] = useState<number>(rows);
+  const [initNear, setinitNear] = useState<number>(near);
+  const [valueError, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    if (initColumns < 100 && initRows < 100 && initNear < 100) {
+    if ((initColumns > 0 && initColumns < 100)
+     && (initRows > 0 && initRows < 100)
+    && (initNear > 0 && initNear < 100)) {
       navigate('/table');
-      setInitColumns(+initColumns);
-      setInitRows(initRows);
-      setinitNear(initNear);
-      setError('');
+      setColumns(initColumns);
+      setRows(initRows);
+      setNear(initNear);
+      setError(null);
     } else {
-      setError('enter: value > 0 < 100');
+      setError('range from 0 to 100');
     }
   };
 
@@ -34,7 +40,7 @@ const Home: React.FC = () => {
               name="columns"
               minLength={1}
               value={initColumns}
-              onChange={(e) => setInitColumns(e.target.value)}
+              onChange={(e) => setInitColumns(+e.target.value)}
               required
             />
             <label htmlFor="rows">rows</label>
@@ -44,7 +50,7 @@ const Home: React.FC = () => {
               name="rows"
               minLength={1}
               value={initRows}
-              onChange={(e) => setInitRows(e.target.value)}
+              onChange={(e) => setInitRows(+e.target.value)}
               required
             />
             <label htmlFor="near">near</label>
@@ -53,11 +59,11 @@ const Home: React.FC = () => {
               type="number"
               name="near"
               value={initNear}
-              onChange={(e) => setinitNear(e.target.value)}
+              onChange={(e) => setinitNear(+e.target.value)}
               required
             />
             <div className="Error">{valueError}</div>
-            <button type="button" className="buttonAdd" disabled={initColumns < 1 || initRows < 1 || initNear < 1} onClick={(e) => handleClick(e)}>
+            <button type="button" className="buttonAdd" onClick={(e) => handleClick(e)}>
               Add New Table
             </button>
           </form>

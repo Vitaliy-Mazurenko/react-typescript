@@ -34,6 +34,8 @@
         "jest": true
     },
     "rules": {
+        "linebreak-style": ["error", "windows"],
+        "no-empty": 1,
         "no-shadow": "off",
         "react/jsx-filename-extension": [2, { "extensions": [ ".tsx" ] }],
         "import/prefer-default-export": "off",
@@ -47,23 +49,23 @@
             "devDependencies": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "src/setupTests.ts"]
         }],
 		"react/function-component-definition": [
-  "error",
-  {
-    "namedComponents": ["function-declaration", "arrow-function"],
-    "unnamedComponents": "arrow-function"
-  }
-],
-"semi": "off",
-"@typescript-eslint/semi": "error",
-"jsx-a11y/label-has-associated-control": [ "error", {
-  "required": {
-    "some": [ "nesting", "id"  ]
-  }
-}],
-"jsx-a11y/label-has-for": [ "error", {
-  "required": {
-    "some": [ "nesting", "id"  ]
-  }
-}]
+    "error",
+    {
+      "namedComponents": ["function-declaration", "arrow-function"],
+      "unnamedComponents": "arrow-function"
+    }
+    ],
+    "semi": "off",
+    "@typescript-eslint/semi": "error",
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+      "some": [ "nesting", "id"  ]
+      }
+    }],
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }]
     }
 }
