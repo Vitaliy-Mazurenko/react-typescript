@@ -8,7 +8,7 @@ const App: React.FC = () => {
   const [rows, setTableRows] = useState<number>(0);
   const [columns, setTableColumns] = useState<number>(0);
   const [near, setTableNear] = useState<number>(0);
-  const [cells, setTableCells] = useState<number[] | string[]>([]);
+  const [cells, setTableCells] = useState<object[]>([]);
 
   const setRows = (data: number) => {
     setTableRows(data);
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     setTableNear(data);
   };
 
-  const setCells = (data: number[] | string[]) => {
+  const setCells = (data: object[]) => {
     setTableCells(data);
   };
 

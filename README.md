@@ -1,49 +1,82 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deploy production build to Github [Create React App](https://vitaliy-mazurenko.github.io/react-typescript/).
 
-## Available Scripts
+#
 
-In the project directory, you can run:
+Arguments
+From the user, you expect to receive numbers M, N, and X.
 
-### `npm start`
+M range from 0 to 100
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+N range from 0 to 100
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Limits for X must be calculated based on M and N values (details below)
 
-### `npm test`
+#
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Data
+Create matrix M\*N, where M is the number of rows and N is the number of columns.
 
-### `npm run build`
+In each cell of the matrix should be an object with a structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+type CellId = number; // unique value for all table
+type CellValue = number; // three digit random number
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+type Cell = {
+id: CellId,
+amount: CellValue
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#
 
-### `npm run eject`
+As a user I should be able to see all data in the table view
+Show all generated data in the table with good UX.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-npx create-react-app react-typescript --template typescript
-npm init
-npm install eslint --save-dev
-npx eslint --init
-npm audit fix
-npm i eslint-plugin-react-hooks --save-dev
-npm i eslint-plugin-import --save-dev
-npm i prettier --save-dev
-npm i eslint-plugin-prettier --save-dev
-npm i eslint-config-prettier --save-dev
-npm i react-router-dom --save
-npm i -D eslint-config-prettier
-npm uninstall eslint-config-prettier
-npm uninstall eslint-plugin-prettier
-npm uninstall prettier
+Each cell contains the previously generated amount
+
+Add an additional column to the table with values sum for each row
+
+Add an additional row to the table with the average value for each column
+
+#
+
+As a user I should be able to increase the value in the cell
+Increate the amount in the cell by 1 when user press on it. Recalculate average and sum values.
+
+#
+
+As a user I should be able to find the nearest by value cells
+Highlight X cells where amount is closest to the amount of hovered cell.
+
+#
+
+Example
+If X = 5 you should find in the matrix 5 cells with amount nearest to the value in the hovered cell and change background for those cells.
+
+#
+
+As a user I should be able to see the percent of each cell in a row
+Replace amount in each cell in the row with the percent when user hover on the sum cell in this row.
+
+Add a vertical gradient background inside the each cell in a row which will fill the calculated percentage of the cell value.
+
+#
+
+Example
+
+1 > 16%
+
+5 > 84%
+
+6 (Hovered)
+
+#
+
+As a user I should be able to remove a row
+Give the ability to remove any row in the table. Sum and average values should be recalculated respectively.
+
+#
+
+As a user I should be able to add a row
+A new row should be appended at the end of the table, sum and average values should be recalculated respectively.

@@ -4,11 +4,11 @@ interface IInitialContext {
   rows: number;
   columns: number;
   near: number;
-  cells: number[] | string[];
+  cells: object[];
   setRows: (arg: number) => void;
   setColumns: (arg: number) => void;
   setNear: (arg: number) => void;
-  setCells: (arg: number[] | string[]) => void;
+  setCells: (arg: object[]) => void;
 }
 
 export const Context = createContext<IInitialContext>({
