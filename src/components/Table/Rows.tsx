@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Cells from './Cells';
 import { Context } from '../../context/context';
 import { average } from '../../helpers/average';
-import type { MyObjType } from '../../helpers/average';
+import type { IObjType } from '../../helpers/average';
 
 interface Props {
   activOn: () => void,
@@ -10,7 +10,7 @@ interface Props {
   nearest: string | null,
   activ: string,
   cell: object,
-  i: number | string,
+  i: string,
 }
 
 const Rows: React.FunctionComponent<Props> = ({
@@ -22,12 +22,14 @@ const Rows: React.FunctionComponent<Props> = ({
   const [percent, setPercent] = useState('');
 
   const onDelete = (id: string) => {
-    let newCells: MyObjType[] = [
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let newCells: any[] = [
       ...cells.slice(0, +id), ...cells.slice(+id + 1),
     ];
+    // console.log(newCells);
     newCells = [...newCells.slice(0, -1)];
 
-    const averageCells = average(newCells);
+    const averageCells: IObjType = average(newCells);
     setCells([...newCells, averageCells]);
   };
 
@@ -38,7 +40,7 @@ const Rows: React.FunctionComponent<Props> = ({
       ...cells.slice(+id, +id + 1),
     ];
 
-    const incrItems: {[key: string]:number} = {};
+    const incrItems: IObjType = {};
     function incrRows(cells: object) {
       const cloneCells = JSON.parse(JSON.stringify(cells));
       if (cloneCells[0]) {
@@ -54,12 +56,13 @@ const Rows: React.FunctionComponent<Props> = ({
     }
     incrRows(incrCells);
 
-    let newCells: MyObjType[] = [
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let newCells: any[] = [
       ...cells.slice(0, +id), incrItems, ...cells.slice(+id + 1),
     ];
     newCells = [...newCells.slice(0, -1)];
 
-    const averageCells: MyObjType[] = average(newCells);
+    const averageCells: IObjType = average(newCells);
     setCells([...newCells, averageCells]);
   };
 

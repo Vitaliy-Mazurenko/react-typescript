@@ -9,19 +9,20 @@ interface childrenProps {
   activ: string,
   percent: number | string,
   cell: object,
-  i: number | string,
+  i: string | undefined,
 }
-
+// incr, activOn, activOff, nearest, activ, percent, cell, i,
 const Cells: React.FC<childrenProps> = ({
-  incr, activOn, activOff, nearest, activ, percent, cell, i,
+  activOn, activOff, nearest, activ, cell, i,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 }): JSX.Element | any => {
   const {
     columns, near, cells,
   } = useContext(Context);
 
   const cellVal = Object.values(cell);
-  const result = cellVal.reduce((sum, elem) => sum + elem, 0);
-  console.log(result);
+  // const result = cellVal.reduce((sum, elem) => sum + elem, 0);
+  // console.log(result);
   const classNameActiv = useCallback((cells: object[], index: number) => {
     const flatenned = [];
     if (cells[0]) {

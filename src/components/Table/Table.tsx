@@ -42,7 +42,7 @@ const Table: React.FC = () => {
                 nearest={nearest}
                 activ={activ}
                 cell={cell}
-                i={i}
+                i={String(i)}
               />
             ))}
           </tbody>
