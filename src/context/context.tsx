@@ -1,14 +1,15 @@
 import { createContext } from 'react';
+import type IObjType from '../types/initData';
 
 interface IInitialContext {
   rows: number;
   columns: number;
   near: number;
-  cells: object[];
+  cells: IObjType[];
   setRows: (arg: number) => void;
   setColumns: (arg: number) => void;
   setNear: (arg: number) => void;
-  setCells: (arg: object[]) => void;
+  setCells: (arg: IObjType[]) => void;
 }
 
 export const Context = createContext<IInitialContext>({
