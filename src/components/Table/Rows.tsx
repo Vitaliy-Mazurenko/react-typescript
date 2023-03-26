@@ -30,8 +30,13 @@ const Rows: React.FunctionComponent<Props> = ({
     const averageCells: IObjType = average(newCells);
     setCells([...newCells, averageCells]);
   };
-
-  const incr = (text: string) => {
+  // (e: React.MouseEvent<HTMLElement>)
+  // event.target as HTMLElement
+    // event:(MouseEvent | TouchEvent)
+    // event: React.SyntheticEvent
+  const incr = (e: React.MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLElement)) return;
+    const text: string = e.target.id;
     const id = text.split('c')[0];
     const incrId = +text.split('c')[1];
     const incrCells = [
@@ -57,7 +62,6 @@ const Rows: React.FunctionComponent<Props> = ({
     let newCells: IObjType[] = [
       ...cells.slice(0, +id), incrItems, ...cells.slice(+id + 1),
     ];
-    // console.log(newCells);
     newCells = [...newCells.slice(0, -1)];
 
     const averageCells: IObjType = average(newCells);
