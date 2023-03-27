@@ -1,5 +1,7 @@
 import React, { useContext, useCallback } from 'react';
 import { Context } from '../../context/context';
+import Cell from './Cell';
+import CellPercent from './CellPercent';
 
 interface childrenProps {
   incr: (text: React.MouseEvent<HTMLElement>) => void,
@@ -35,32 +37,25 @@ const Cells: React.FC<childrenProps> = ({
 
   return (
     Array.from({ length: columns }).map((item, index) => {
-      const color = `red ${`${1}%`}`;
       const transparent = Math.round((cellVal[index] / result) * 100);
-      const background = { background: `linear-gradient(to bottom, Transparent ${100 - transparent}%, ${color})` };
       const isPercent = percent === `${i}r`;
       return (
         (isPercent) ? (
-          <td
-            style={background}
-            key={`${i}${index.toString()}`}
-          >
-            {`${transparent}%`}
-          </td>
-        ) : (
-          <td
+          <CellPercent
             key={`${i}${index.toString()}`}
             id={`${i}c${index}`}
+            transparent={transparent}
+          />
+        ) : (
+          <Cell
+            key={`${i}${index.toString()}`}
+            incr={incr}
+            activOn={activOn}
+            activOff={activOff}
+            id={`${i}c${index}`}
             className={(classNameActiv(cells, index)) ? (activ) : ''}
-            onClick={(e: React.MouseEvent<HTMLElement>) => incr(e)}
-            onMouseEnter={(e: React.MouseEvent<HTMLElement>) => activOn(e)}
-            onMouseLeave={activOff}
-            // onKeyPress={(e: React.KeyboardEvent<HTMLTableCellElement>) => incr(e)}
-            // role="presentation"
-            role="gridcell"
-          >
-            {cellVal[index]}
-          </td>
+            cellValue={cellVal[index]}
+          />
         )
       );
     })
