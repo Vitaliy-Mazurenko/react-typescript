@@ -18,8 +18,6 @@ const Cell: React.FC<childrenProps> = ({
     onClick={(e: React.MouseEvent<HTMLElement>) => incr(e)}
     onMouseEnter={(e: React.MouseEvent<HTMLElement>) => activOn(e)}
     onMouseLeave={activOff}
-    // onKeyPress={(e: React.KeyboardEvent<HTMLTableCellElement>) => incr(e)}
-    // role="presentation"
     role="gridcell"
   >
     {cellValue}

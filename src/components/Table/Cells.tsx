@@ -14,10 +14,10 @@ interface childrenProps {
   i: string | undefined,
 }
 
-const Cells: React.FC<childrenProps> = ({
+const Cells = ({
   incr, activOn, activOff, nearest, activ, percent, cell, i,
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-}): JSX.Element | any => {
+
+}: childrenProps) => {
   const { columns, near, cells } = useContext(Context);
 
   const cellVal = Object.values(cell);
@@ -36,6 +36,8 @@ const Cells: React.FC<childrenProps> = ({
   }, [cellVal, near, nearest]);
 
   return (
+    <>
+      {
     Array.from({ length: columns }).map((item, index) => {
       const transparent = Math.round((cellVal[index] / result) * 100);
       const isPercent = percent === `${i}r`;
@@ -59,6 +61,8 @@ const Cells: React.FC<childrenProps> = ({
         )
       );
     })
+    }
+    </>
   );
 };
 

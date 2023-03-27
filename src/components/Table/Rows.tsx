@@ -13,7 +13,7 @@ interface Props {
   i: string,
 }
 
-const Rows: React.FunctionComponent<Props> = ({
+const Rows = ({
   activOn, activOff, nearest, activ, cell, i,
 }: Props) => {
   const {
@@ -43,13 +43,11 @@ const Rows: React.FunctionComponent<Props> = ({
 
     const incrItems: IObjType = {};
     function incrRows(cells: object) {
-      const cloneCells = JSON.parse(JSON.stringify(cells));
+      const cloneCells: IObjType[] = JSON.parse(JSON.stringify(cells));
       if (cloneCells[0]) {
         const column = Object.values(cloneCells[0]);
         for (let i = 0; i < column.length; i += 1) {
           if (i === incrId) {
-            // eslint-disable-next-line no-plusplus
-            // ++cloneCells[0][incrId];
             cloneCells[0][incrId] += 1;
           }
           incrItems[i] = cloneCells[0][i];
