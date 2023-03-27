@@ -5,7 +5,7 @@ import { average } from '../../helpers/average';
 import type IObjType from '../../types/initData';
 
 interface Props {
-  activOn: () => void,
+  activOn: (e: React.MouseEvent<HTMLElement>) => void,
   activOff: () => void,
   nearest: string | null,
   activ: string,
@@ -30,13 +30,11 @@ const Rows: React.FunctionComponent<Props> = ({
     const averageCells: IObjType = average(newCells);
     setCells([...newCells, averageCells]);
   };
-  // (e: React.MouseEvent<HTMLElement>)
-  // event.target as HTMLElement
-    // event:(MouseEvent | TouchEvent)
-    // event: React.SyntheticEvent
+
   const incr = (e: React.MouseEvent<HTMLElement>) => {
     if (!(e.target instanceof HTMLElement)) return;
-    const text: string = e.target.id;
+    const target = e.target as HTMLElement;
+    const text: string = target.id;
     const id = text.split('c')[0];
     const incrId = +text.split('c')[1];
     const incrCells = [
@@ -51,7 +49,8 @@ const Rows: React.FunctionComponent<Props> = ({
         for (let i = 0; i < column.length; i += 1) {
           if (i === incrId) {
             // eslint-disable-next-line no-plusplus
-            ++cloneCells[0][incrId];
+            // ++cloneCells[0][incrId];
+            cloneCells[0][incrId] += 1;
           }
           incrItems[i] = cloneCells[0][i];
         }
@@ -77,8 +76,9 @@ const Rows: React.FunctionComponent<Props> = ({
       flatenned[i] = Object.values(cells[i]);
     }
   }
-  function hoverOn(e: React.ChangeEvent<HTMLElement>) {
-    const { id } = e.target;
+  function hoverOn(e: React.MouseEvent<HTMLElement>) {
+    const target = e.target as HTMLElement;
+    const { id } = target;
     if (id === (`${i}r`)) {
       setPercent(`${i}r`);
     }
@@ -102,11 +102,10 @@ const Rows: React.FunctionComponent<Props> = ({
       <td
         id={`${i}r`}
         className="tableRes"
-        onMouseEnter={() => hoverOn}
+        onMouseEnter={hoverOn}
         onMouseLeave={hoverOff}
       >
         {result}
-
       </td>
       <td className="tableEnd">
         <button

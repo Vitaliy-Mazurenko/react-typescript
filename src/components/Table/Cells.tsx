@@ -3,7 +3,7 @@ import { Context } from '../../context/context';
 
 interface childrenProps {
   incr: (text: React.MouseEvent<HTMLElement>) => void,
-  activOn: () => void,
+  activOn: (e: React.MouseEvent<HTMLElement>) => void,
   activOff: () => void,
   nearest: string | null,
   activ: string,
@@ -11,18 +11,16 @@ interface childrenProps {
   cell: object,
   i: string | undefined,
 }
-// incr, activOn, activOff, nearest, activ, percent, cell, i,
+
 const Cells: React.FC<childrenProps> = ({
-  incr, activOn, activOff, nearest, activ, cell, i,
+  incr, activOn, activOff, nearest, activ, percent, cell, i,
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }): JSX.Element | any => {
-  const {
-    columns, near, cells,
-  } = useContext(Context);
+  const { columns, near, cells } = useContext(Context);
 
   const cellVal = Object.values(cell);
-  // const result = cellVal.reduce((sum, elem) => sum + elem, 0);
-  // console.log(result);
+  const result = cellVal.reduce((sum, elem) => sum + elem, 0);
+
   const classNameActiv = useCallback((cells: object[], index: number) => {
     const flatenned = [];
     if (cells[0]) {
@@ -36,25 +34,37 @@ const Cells: React.FC<childrenProps> = ({
   }, [cellVal, near, nearest]);
 
   return (
-    Array.from({ length: columns }).map((_item, index) => (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-      <td
-        key={`${i}${index.toString()}`}
-        id={`${i}c${index}`}
-        className={(classNameActiv(cells, index)) ? (activ) : ''}
-        onClick={(e: React.MouseEvent<HTMLElement>) => incr(e)}
-        // onKeyPress={(e: any) => incr(e)}
-        onMouseEnter={() => activOn}
-        onMouseLeave={activOff}
-        role="presentation"
-      >
-        {cellVal[index]}
-      </td>
-    ))
+    Array.from({ length: columns }).map((item, index) => {
+      const color = `red ${`${1}%`}`;
+      const transparent = Math.round((cellVal[index] / result) * 100);
+      const background = { background: `linear-gradient(to bottom, Transparent ${100 - transparent}%, ${color})` };
+      const isPercent = percent === `${i}r`;
+      return (
+        (isPercent) ? (
+          <td
+            style={background}
+            key={`${i}${index.toString()}`}
+          >
+            {`${transparent}%`}
+          </td>
+        ) : (
+          <td
+            key={`${i}${index.toString()}`}
+            id={`${i}c${index}`}
+            className={(classNameActiv(cells, index)) ? (activ) : ''}
+            onClick={(e: React.MouseEvent<HTMLElement>) => incr(e)}
+            onMouseEnter={(e: React.MouseEvent<HTMLElement>) => activOn(e)}
+            onMouseLeave={activOff}
+            // onKeyPress={(e: React.KeyboardEvent<HTMLTableCellElement>) => incr(e)}
+            // role="presentation"
+            role="gridcell"
+          >
+            {cellVal[index]}
+          </td>
+        )
+      );
+    })
   );
 };
 
 export default Cells;
-// function incr(id: any): void {
-//   throw new Error('Function not implemented.');
-// }<div onClick={(e) => incr(e)} onKeyPress={this.handleKeyPress} />

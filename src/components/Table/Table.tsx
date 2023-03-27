@@ -13,8 +13,8 @@ const Table: React.FC = () => {
 
   const [activ, setActiv] = useState<string>('');
   const [nearest, setNearest] = useState<string | null>('');
-
-  const activOn = useCallback((e: React.ChangeEvent<HTMLElement>) => {
+  // const activOn = useCallback((e: React.BaseSyntheticEvent<HTMLElement>) => {
+  const activOn = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (!(e.target instanceof HTMLElement)) return;
     const { textContent } = e.target;
     setNearest(textContent);
@@ -31,12 +31,12 @@ const Table: React.FC = () => {
         <button type="button" className="primary" onClick={() => navigate('/')}>Back</button>
       </span>
       <div>
-        <table className="Mtable" aria-label="simple table">
+        <table className="Mtable" role="grid">
           <tbody>
             {[...cells.slice(0, -1)].map((cell, i) => (
               <Rows
                 key={`${i.toString()}`}
-                activOn={() => activOn}
+                activOn={(e: React.MouseEvent<HTMLElement>) => activOn(e)}
                 activOff={activOff}
                 nearest={nearest}
                 activ={activ}
