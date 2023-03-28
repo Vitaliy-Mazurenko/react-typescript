@@ -6,9 +6,9 @@ import { Context } from './context/context';
 import type IObjType from './types/initData';
 
 const App: React.FC = () => {
-  const [rows, setTableRows] = useState<number>(0);
-  const [columns, setTableColumns] = useState<number>(0);
-  const [near, setTableNear] = useState<number>(0);
+  const [rows, setTableRows] = useState(0);
+  const [columns, setTableColumns] = useState(0);
+  const [near, setTableNear] = useState(0);
   const [cells, setTableCells] = useState<IObjType[]>([]);
 
   const setRows = (data: number) => {
